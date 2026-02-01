@@ -19,7 +19,7 @@ cniConfig:
 
 nodes:
   - hostname: "kube-vm-one"
-    ipAddress: "10.10.10.21"
+    ipAddress: "10.10.10.185"
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
@@ -30,7 +30,7 @@ nodes:
           hardwareAddr: "00:15:5d:01:71:1c"
         dhcp: false
         addresses:
-          - "10.10.10.21/24"
+          - "10.10.10.185/24"
         routes:
           - gateway: "10.10.10.1"
             network: 0.0.0.0/0
@@ -38,7 +38,7 @@ nodes:
         vip:
           ip: "10.10.10.5"
   - hostname: "kube-vm-two"
-    ipAddress: "10.10.10.22"
+    ipAddress: "10.10.10.186"
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
@@ -49,7 +49,7 @@ nodes:
           hardwareAddr: "00:15:5d:01:71:1d"
         dhcp: false
         addresses:
-          - "10.10.10.22/24"
+          - "10.10.10.186/24"
         routes:
           - gateway: "10.10.10.1"
             network: 0.0.0.0/0
