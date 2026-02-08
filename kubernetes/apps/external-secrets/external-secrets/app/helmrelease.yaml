@@ -1,0 +1,22 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: external-secrets
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: external-secrets
+  interval: 1h
+  values:
+    replicaCount: 2
+    installCRDs: true
+    crds:
+      enabled: true
+    serviceAccount:
+      create: true
+      name: external-secrets
+    rbac:
+      create: true
+    serviceMonitor:
+      enabled: true
