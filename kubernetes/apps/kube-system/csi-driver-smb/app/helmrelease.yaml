@@ -4,31 +4,18 @@ kind: HelmRelease
 metadata:
   name: csi-driver-smb
 spec:
-  chartRef:
-    kind: OCIRepository
-    name: csi-driver-smb
+  chart:
+    spec:
+      chart: charts/latest/csi-driver-smb
+      sourceRef:
+        kind: GitRepository
+        name: csi-driver-smb
   interval: 1h
   values:
-    image:
-      smb:
-        repository: mcr.microsoft.com/k8s/csi/smb/csi-node
-        tag: v1.14.5
-      csiProvisioner:
-        repository: mcr.microsoft.com/oss/kubernetes-csi/csi-provisioner
-        tag: v3.6.1
-      nodeDriverRegistrar:
-        repository: mcr.microsoft.com/oss/kubernetes-csi/csi-node-driver-registrar
-        tag: v2.9.1
-      livenessProbe:
-        repository: mcr.microsoft.com/oss/kubernetes-csi/livenessprobe
-        tag: v2.11.0
-    rbac:
-      create: true
-    serviceAccount:
-      create: true
+    linux:
+      enabled: true
+    windows:
+      enabled: false
     controller:
-      enabled: true
-      replicas: 1
-      runOnControlPlane: true
-    node:
-      enabled: true
+      runOnControlPlane: false
+    priorityClassName: system-cluster-critical

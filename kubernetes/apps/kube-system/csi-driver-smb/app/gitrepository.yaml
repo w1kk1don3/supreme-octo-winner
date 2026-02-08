@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: csi-driver-smb
+spec:
+  interval: 15m
+  url: https://github.com/kubernetes-csi/csi-driver-smb.git
+  ref:
+    branch: master
